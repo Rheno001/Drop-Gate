@@ -1,15 +1,26 @@
-import React from "react";
+// components/ConnectWallet.tsx
+import { createThirdwebClient } from "thirdweb";
 import { ConnectButton } from "thirdweb/react";
-import { client } from "../client";
+import { createWallet } from "thirdweb/wallets";
 
-const ConnectWallet: React.FC = () => {
+const client = createThirdwebClient({
+  clientId: "YOUR_CLIENT_ID", // Replace with your real client ID from thirdweb dashboard
+});
+
+const wallets = [
+  createWallet("io.metamask"),
+  createWallet("com.coinbase.wallet"),
+  createWallet("me.rainbow"),
+  createWallet("io.rabby"),
+  createWallet("io.zerion.wallet"),
+];
+
+const ConnectWallet = () => {
   return (
     <ConnectButton
       client={client}
-      appMetadata={{
-        name: "DropGate",
-        url: "https://dropgate.io", // update with your actual domain
-      }}
+      connectModal={{ size: "compact" }}
+      wallets={wallets}
     />
   );
 };
