@@ -128,7 +128,10 @@ const Home: React.FC = () => {
             </div>
             <div className="space-y-4">
               {faqs.map((faq, index) => (
-                <div key={index} className="bg-gray-800 rounded-lg border border-gray-700 overflow-hidden">
+                <div
+                  key={index}
+                  className="bg-gray-800 rounded-lg border border-gray-700 overflow-hidden transition-all duration-300"
+                >
                   <button
                     onClick={() => setOpenFaq(openFaq === index ? null : index)}
                     className="w-full p-6 text-left flex justify-between items-center hover:bg-gray-700 transition"
@@ -136,11 +139,15 @@ const Home: React.FC = () => {
                     <span className="text-lg font-medium">{faq.question}</span>
                     <span className="text-2xl text-blue-400">{openFaq === index ? '−' : '+'}</span>
                   </button>
-                  {openFaq === index && (
-                    <div className="px-6 pb-6 text-gray-300">
+                  <div
+                    className={`transition-all duration-300 ease-in-out grid ${
+                      openFaq === index ? 'grid-rows-[1fr] opacity-100 py-2' : 'grid-rows-[0fr] opacity-0'
+                    }`}
+                  >
+                    <div className="overflow-hidden px-6 text-gray-300">
                       <p>{faq.answer}</p>
                     </div>
-                  )}
+                  </div>
                 </div>
               ))}
             </div>
@@ -164,7 +171,6 @@ const Home: React.FC = () => {
           </div>
         </section>
       </main>
-
       <Footer />
     </div>
   );
