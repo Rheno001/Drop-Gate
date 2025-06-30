@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import ConnectWallet from '../components/connectWallet';
+// import ConnectWallet from '../components/connectWallet';
 import { FaLock, FaWallet, FaFileAlt, FaBook, FaCoins } from 'react-icons/fa';
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { useAccount } from "wagmi";
 
 const Home: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const isConnected = false; // Replace with actual wallet connection logic
+  const { isConnected } = useAccount(); // Replace with actual wallet connection logic
 
   const faqs = [
     {
@@ -162,7 +164,7 @@ const Home: React.FC = () => {
           </p>
           <div className="flex justify-center gap-4 flex-wrap">
             {!isConnected ? (
-              <ConnectWallet />
+              <ConnectButton />
             ) : (
               <Link to="/upload" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg text-lg font-medium transition">
                 Upload a File

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import ConnectWallet from './connectWallet';
+// import ConnectWallet from './connectWallet';
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 const Navbar: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -35,7 +36,7 @@ const Navbar: React.FC = () => {
           <Link to="/browse" className="text-gray-700 hover:text-black">Browse</Link>
           <Link to="/upload" className="text-gray-700 hover:text-black">Upload</Link>
           <Link to="/dashboard" className="text-gray-700 hover:text-black">Dashboard</Link>
-          <ConnectWallet />
+          <ConnectButton />
         </div>
       </div>
 
@@ -46,7 +47,7 @@ const Navbar: React.FC = () => {
           <Link to="/upload" className="block py-2 text-gray-700 hover:text-black">Upload</Link>
           <Link to="/dashboard" className="block py-2 text-gray-700 hover:text-black">Dashboard</Link>
           <div className="py-2">
-            <ConnectWallet />
+            <ConnectButton />
           </div>
         </div>
       )}
